@@ -113,10 +113,14 @@ def add_example():
     return jsonify({"examples": examples})
 
 
-@app.route("/api/examples/<int:index>", methods=["DELETE"])
-def delete_example(index):
+@app.route("/api/examples", methods=["DELETE"])
+def delete_example():
     if not check_train_key():
         return jsonify({"error": "Unauthorized"}), 401
+    try:
+        index = int(request.args.get("index", -1))
+    except (TypeError, ValueError):
+        index = -1
     examples = load_examples()
     if 0 <= index < len(examples):
         examples.pop(index)

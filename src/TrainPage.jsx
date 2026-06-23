@@ -77,7 +77,7 @@ function TrainPage() {
 
   const removeExample = async (index) => {
     try {
-      const res = await fetch(`/api/examples/${index}`, {
+      const res = await fetch(`/api/examples?index=${index}`, {
         method: 'DELETE',
         headers: { 'X-Train-Key': trainKey },
       })
@@ -103,8 +103,8 @@ function TrainPage() {
       <div className="app">
         <header>
           <div className="brand">
-            <span className="mark">HB</span>
-            <h1>Hinge Bot — Train</h1>
+            <span className="mark">VP</span>
+            <h1>Voiceprint — Train</h1>
           </div>
           <p className="tagline">This page is just for you.</p>
         </header>
@@ -130,8 +130,8 @@ function TrainPage() {
     <div className="app">
       <header>
         <div className="brand">
-          <span className="mark">HB</span>
-          <h1>Hinge Bot — Train</h1>
+          <span className="mark">VP</span>
+          <h1>Voiceprint — Train</h1>
         </div>
         <p className="tagline">
           Add exchanges here. The public page only ever sees the count, never the text.
@@ -140,7 +140,7 @@ function TrainPage() {
 
       <div className="hero">
         <div className="hero-top">
-          <span className="eyebrow">Hinge Bot</span>
+          <span className="eyebrow">Voice calibration</span>
           <span className="calib-count">
             {calibration.count} example{calibration.count === 1 ? '' : 's'}
           </span>
